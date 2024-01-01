@@ -1,66 +1,9 @@
-
-import { useEffect, useState } from 'react'
-import './App.css'
-import Todo from './components/Todo'
-import { collection, query, onSnapshot, updateDoc, doc, addDoc, deleteDoc } from "firebase/firestore";
-import { db } from "./firebase";
+import Welcome from "./components/Welcome/Welcome"
 
 
-function App() {
-
-  const [todos, setTodos] = useState([])
-  const [input, setInput] = useState('')
-
-
-
-
-
-  // create todo
-
-  const createTodo = async (e) => {
-    e.preventDefault()
-
-    if (input === '') {
-      alert('Fields cannot be empty')
-      return
-    }
-    await addDoc(collection(db, "todos"), {
-      text: input,
-      completed: false
-    });
-    setInput('')
-
-  }
-  // get todo from firebase
-
-  useEffect(() => {
-    const q = query(collection(db, 'todos'))
-
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      let todosArr = []
-      querySnapshot.forEach((doc) => {
-        todosArr.push({ ...doc.data(), id: doc.id })
-      })
-      setTodos(todosArr)
-    })
-    return () => unsubscribe()
-
-  }, [])
-
-  // update todo
-  const toggleComplete = async (todo) => {
-    await updateDoc(doc(db, 'todos', todo.id), {
-      completed: !todo.completed
-    })
-  }
-
-  // delete todo
-
-  const deletetodo = async ( id) =>{
-    await deleteDoc(doc(db,'todos',id))
-  }
-
+const App = () => {
   return (
+<<<<<<< HEAD
     <>
       <div className="todo-wrapper">
         <div className="todo-container bg-white p-7 border rounded-sm shadow-sm ">
@@ -93,6 +36,12 @@ function App() {
         </div>
       </div>
     </>
+=======
+    <div>
+      
+      <Welcome/>
+    </div>
+>>>>>>> a97038259a5bf8281492e77c3e7a72081c0cc7f9
   )
 }
 
