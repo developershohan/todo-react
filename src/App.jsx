@@ -66,7 +66,7 @@ function App() {
         <div className="todo-container bg-white p-7 border rounded-sm shadow-sm ">
           <div className="todo-header mb-3">
 
-            <h1 className="text-3xl text-black font-bold uppercase">Todo list</h1>
+            <h1 className="text-3xl text-black font-bold uppercase">Todo list pro</h1>
           </div>
           <div className="todo-body ">
             <form onSubmit={createTodo} className=' flex gap-2 '>
